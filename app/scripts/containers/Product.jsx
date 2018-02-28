@@ -25,7 +25,7 @@ export class ProductContainer extends React.Component {
   }
 
   render() {
-    const app = this.props;
+    const { app } = this.props;
     const productData = app.app.data.product;
     const serviceData = app.app.data.services;
 
