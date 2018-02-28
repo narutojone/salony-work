@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ImageGallery from 'react-image-gallery';
 
-import Loader from 'components/Loader';
-import HourTable from 'components/HourTable'
+import HourTable from 'components/HourTable';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { getProductByID } from 'actions/index';
 import { getServicesByID } from 'actions/index';
 
 export class ProductContainer extends React.Component {
   state = {
-    query: 'react',    
     productData: {},
     service: {},
   };
 
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    id: PropTypes.any,
   };
 
   componentWillMount() {
@@ -25,7 +25,7 @@ export class ProductContainer extends React.Component {
   }
 
   render() {
-    const { app } = this.props;
+    const app = this.props;
     const productData = app.app.data.product;
     const serviceData = app.app.data.services;
 
@@ -33,10 +33,10 @@ export class ProductContainer extends React.Component {
       return image.image_urls;
     });
 
-    if(images.length == 0) {
-      let emptyImage = {        
-          original: "http://www.cmp-cyprus.org/sites/all/modules/media_gallery/images/empty_gallery.png"   //Show empty image if product has no image.
-      }
+    if (images.length === 0) {
+      const emptyImage = {
+        original: 'http://www.cmp-cyprus.org/sites/all/modules/media_gallery/images/empty_gallery.png',
+      };
       images.push(emptyImage);
     }
 
@@ -47,26 +47,30 @@ export class ProductContainer extends React.Component {
         </div>
         <div className="slider margintop">
           <ImageGallery
-            showFullscreenButton={false} 
+            showFullscreenButton={false}
             showPlayButton={false}
             showThumbnails={false}
-            items={images} 
-            sizes="300" 
+            items={images}
+            sizes="300"
           />
         </div>
         <div className="margintop">
           <h5>Working hours</h5>
-          <HourTable data={productData.hours}/>
+          <HourTable data={productData.hours} />
         </div>
         <div className="margintop">
           <h5>Description</h5>
-          <h5 className="margintop">{productData.description}</h5>
+          <h5 className="description">{productData.description}</h5>
           <h5 className="margintop">Service</h5>
-          <BootstrapTable className="table" printable data={serviceData} striped={true} hover={true}>
-              <TableHeaderColumn dataField="name" isKey={true} dataSort={true} width="400">Name</TableHeaderColumn>
-              <TableHeaderColumn dataField="duration" dataSort={true} width="400">Duration (Min)</TableHeaderColumn>
-              <TableHeaderColumn dataField="price" dataSort={true} width="400">Price (KD)</TableHeaderColumn>               
-          </BootstrapTable>           
+          <BootstrapTable
+            className="table"
+            printable data={serviceData}
+            striped={true} hover={true}
+          >
+            <TableHeaderColumn dataField="name" isKey={true} dataSort={true} width="400">Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="duration" dataSort={true} width="400">Duration (Min)</TableHeaderColumn>
+            <TableHeaderColumn dataField="price" dataSort={true} width="400">Price (KD)</TableHeaderColumn>               
+          </BootstrapTable>
         </div>
       </div>
     );
@@ -75,7 +79,7 @@ export class ProductContainer extends React.Component {
 
 /* istanbul ignore next */
 function mapStateToProps(state) {
-    return {product: state.product, app: state.app};
+  return { product: state.product, app: state.app };
 }
 
 export default connect(mapStateToProps)(ProductContainer);
