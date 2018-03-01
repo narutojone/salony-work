@@ -18,9 +18,9 @@ export const appState = {
         {
           name: '',
           website: '',
-          images: [{id:0, image_urls: {thumb: ''}}],
+          images: [{ id: 0, image_urls: { thumb: '' } }],
           id: '',
-        }
+        },
       ]
     },
     status: 'idle',

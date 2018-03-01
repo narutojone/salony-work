@@ -3,6 +3,35 @@
 exports[`App should handle HIDE_ALERT 1`] = `
 Object {
   "alerts": Array [],
+  "app": Object {
+    "data": Object {
+      "product": Object {
+        "description": "",
+        "hours": Object {},
+        "images": Array [],
+        "name": "",
+      },
+      "products": Array [
+        Object {
+          "id": "",
+          "images": Array [
+            Object {
+              "id": 0,
+              "image_urls": Object {
+                "thumb": "",
+              },
+            },
+          ],
+          "name": "",
+          "website": "",
+        },
+      ],
+    },
+    "message": "",
+    "pagenum": "",
+    "query": "",
+    "status": "idle",
+  },
 }
 `;
 
@@ -18,11 +47,69 @@ Object {
       "type": "success",
     },
   ],
+  "app": Object {
+    "data": Object {
+      "product": Object {
+        "description": "",
+        "hours": Object {},
+        "images": Array [],
+        "name": "",
+      },
+      "products": Array [
+        Object {
+          "id": "",
+          "images": Array [
+            Object {
+              "id": 0,
+              "image_urls": Object {
+                "thumb": "",
+              },
+            },
+          ],
+          "name": "",
+          "website": "",
+        },
+      ],
+    },
+    "message": "",
+    "pagenum": "",
+    "query": "",
+    "status": "idle",
+  },
 }
 `;
 
 exports[`App should return the initial state 1`] = `
 Object {
   "alerts": Array [],
+  "app": Object {
+    "data": Object {
+      "product": Object {
+        "description": "",
+        "hours": Object {},
+        "images": Array [],
+        "name": "",
+      },
+      "products": Array [
+        Object {
+          "id": "",
+          "images": Array [
+            Object {
+              "id": 0,
+              "image_urls": Object {
+                "thumb": "",
+              },
+            },
+          ],
+          "name": "",
+          "website": "",
+        },
+      ],
+    },
+    "message": "",
+    "pagenum": "",
+    "query": "",
+    "status": "idle",
+  },
 }
 `;

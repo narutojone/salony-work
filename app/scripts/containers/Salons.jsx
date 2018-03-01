@@ -8,7 +8,7 @@ import { getProduct } from 'actions/index';
 
 export class Salons extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       pageNum: 1,
@@ -18,6 +18,7 @@ export class Salons extends React.Component {
   }
 
   static propTypes = {
+    app: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
   };
 
@@ -31,8 +32,8 @@ export class Salons extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let salonsData = this.state.salonsData;
-    let product = nextProps.app.app.data.products;    
+    const { salonsData } = this.state;
+    const product = nextProps.app.app.data.products;
     if (product.length > 1 && salonsData.filter(e => e[0].name === product[0].name).length <= 0) {
       salonsData.push(nextProps.app.app.data.products);
       this.setState({ salonsData: salonsData });
@@ -43,14 +44,14 @@ export class Salons extends React.Component {
     window.removeEventListener('scroll', this.handleScroll, false);
   }
 
-  handleScroll = (event) =>  {
-    const windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+  handleScroll = () => {
+    const windowHeight = 'innerHeight' in window ? window.innerHeight : document.documentElement.offsetHeight;
     const body = document.body;
     const html = document.documentElement;
     const docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,  html.scrollHeight, html.offsetHeight);
     const windowBottom = windowHeight + window.pageYOffset;
     if (windowBottom >= docHeight) {
-      let pageNum = this.state.pageNum;
+      const pageNum = this.state.pageNum;
       this.props.dispatch(getProduct(pageNum + 1));
       this.setState({
         pageNum: pageNum + 1,
@@ -68,9 +69,9 @@ export class Salons extends React.Component {
               <TableHeaderColumn dataField="website" dataSort={true} width="400">Website</TableHeaderColumn>
               <TableHeaderColumn 
                 dataField="images" dataFormat={cell => (
-                  cell[0] !== undefined && cell[0].hasOwnProperty('image_urls') ?
-                    <img src={cell[0].image_urls.thumb} className="image" /> :
-                    <img src="http://www.cmp-cyprus.org/sites/all/modules/media_gallery/images/empty_gallery.png" className="image" />
+                  cell[0] !== undefined && Object.prototype.hasOwnProperty.call(cell[0], 'image_urls') ?
+                    <img alt="" src={cell[0].image_urls.thumb} className="image" /> :
+                    <img alt="" src="http://www.cmp-cyprus.org/sites/all/modules/media_gallery/images/empty_gallery.png" className="image" />
                 )}
               >
                 Image
@@ -82,7 +83,7 @@ export class Salons extends React.Component {
               />
             </BootstrapTable>
           </LazyLoad>
-        ))         
+        ))
         }
       </div>
     );

@@ -7,7 +7,6 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { request } from 'modules/client';
 
 import { ActionTypes } from 'constants/index';
-import { getServiceByID } from '../actions/app';
 
 /**
  * Login
@@ -25,7 +24,6 @@ export function* getProductByID({ payload }) {
   }
   catch (err) {
     /* istanbul ignore next */
-    
   }
 }
 
@@ -39,7 +37,6 @@ export function* getProduct({ payload }) {
   }
   catch (err) {
     /* istanbul ignore next */
-    
   }
 }
 
@@ -53,7 +50,6 @@ export function* getServicesByID({ payload }) {
   }
   catch (err) {
     /* istanbul ignore next */
-    
   }
 }
 

@@ -5,8 +5,7 @@ import ImageGallery from 'react-image-gallery';
 
 import HourTable from 'components/HourTable';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import { getProductByID } from 'actions/index';
-import { getServicesByID } from 'actions/index';
+import { getProductByID, getServicesByID } from 'actions/index';
 
 export class ProductContainer extends React.Component {
   state = {
@@ -20,14 +19,15 @@ export class ProductContainer extends React.Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(getProductByID(this.props.id));
-    this.props.dispatch(getServicesByID(this.props.id));
+    const { dispatch } = this.props;
+    dispatch(getProductByID(this.props.id));
+    dispatch(getServicesByID(this.props.id));
   }
 
   render() {
-    const { app } = this.props;
-    const productData = app.app.data.product;
-    const serviceData = app.app.data.services;
+    const app = this.props;
+    const productData = app.app.app.data.product;
+    const serviceData = app.app.app.data.services;
 
     const images = productData.images.map(image => {
       return image.image_urls;

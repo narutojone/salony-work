@@ -6,11 +6,30 @@ describe('store', () => {
       _persist: { rehydrated: true, version: -1 },
       app: {
         alerts: [],
-      },
-      github: {
-        repos: {
-          data: {},
+        app: {
+          data: {
+            product: {
+              description: '',
+              hours: {},
+              images: [],
+              name: '',
+            },
+            products: [
+              {
+                id: '',
+                images: [{
+                  id: 0,
+                  image_urls: {
+                    thumb: '',
+                  },
+                }],
+                name: '',
+                website: '',
+              },
+            ],
+          },
           message: '',
+          pagenum: '',
           query: '',
           status: 'idle',
         },
